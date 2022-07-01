@@ -122,8 +122,24 @@ namespace 生成xml工具
 
             DateTime tim = DateTime.Parse(DateTime.Now.ToString());
             string tims = tim.ToString("yyyyMMddHHmmss");
+            // 指定你要操作的目录. 
+            string path = @"D:\datalabs";
+            try
+            {
+                // 判断目录是否存在. 
+                if (!Directory.Exists(path))
+                {
+                    // 如果不存在就创建它. 
+                    Directory.CreateDirectory(path);
+                }
 
-            doc.Save(@"D:/datalab/"+ tims+ ".xml");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The process failed: {0}", ex.ToString());
+            }
+
+            doc.Save(path+"/"+ tims+ ".xml");
             MessageBox.Show("保存成功");
             
         }
