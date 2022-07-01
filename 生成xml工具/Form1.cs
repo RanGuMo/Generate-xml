@@ -50,7 +50,7 @@ namespace 生成xml工具
             itemInfor.AppendChild(baseInfo);
 
             //7, 给BaseInfo添加子节点
-            GetBaseInfo(doc, baseInfo);
+            GetBaseInfo(doc, baseInfo, "2352628", "小儿科", "罗玺琳", "女", "17岁10个月5天", "2022.04.10 14:14:56", "蒋先红");
 
             XmlElement itemList = doc.CreateElement("ItemList");
             itemInfor.AppendChild(itemList);
@@ -85,34 +85,35 @@ namespace 生成xml工具
 
         }
 
-        private static void GetBaseInfo(XmlDocument doc, XmlElement baseInfo)
+        private static void GetBaseInfo(XmlDocument doc, XmlElement baseInfo,
+            string PatientID,string Dept,string Name,string Sex,string Age,string PrintDate,string Doctor)
         {
             XmlElement patientID = doc.CreateElement("PatientID");
-            patientID.InnerText = "2352628";
+            patientID.InnerText = PatientID;
             baseInfo.AppendChild(patientID);
 
             XmlElement dept = doc.CreateElement("Dept");
-            dept.InnerText = "小儿科";
+            dept.InnerText = Dept;
             baseInfo.AppendChild(dept);
 
             XmlElement name = doc.CreateElement("Name");
-            name.InnerText = "罗玺琳";
+            name.InnerText = Name;
             baseInfo.AppendChild(name);
 
             XmlElement sex = doc.CreateElement("Sex");
-            sex.InnerText = "罗玺琳";
+            sex.InnerText = Sex;
             baseInfo.AppendChild(sex);
 
             XmlElement age = doc.CreateElement("Age");
-            age.InnerText = "女";
+            age.InnerText = Age;
             baseInfo.AppendChild(age);
 
             XmlElement printDate = doc.CreateElement("PrintDate");
-            printDate.InnerText = "2022.04.10 14:14:56";
+            printDate.InnerText = PrintDate;
             baseInfo.AppendChild(printDate);
 
             XmlElement doctor = doc.CreateElement("Doctor");
-            doctor.InnerText = "蒋先红";
+            doctor.InnerText = Doctor;
             baseInfo.AppendChild(doctor);
         }
 
