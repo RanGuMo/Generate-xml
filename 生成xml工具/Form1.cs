@@ -89,32 +89,9 @@ namespace 生成xml工具
 
             #region 8.给ItemList 添加子节点(Item)
 
-            XmlElement item = doc.CreateElement("Item");
-            itemList.AppendChild(item);
+            GetItem(doc, itemList, "0200112012", "紫管", "*梅毒螺旋体特异抗体测定（免疫法）", "全血", "", "");
 
-            XmlElement barcode = doc.CreateElement("Barcode");
-            barcode.InnerText = "0200112012";
-            item.AppendChild(barcode);
-
-            XmlElement tubeColor = doc.CreateElement("TubeColor");
-            tubeColor.InnerText = "紫管";
-            item.AppendChild(tubeColor);
-
-            XmlElement project = doc.CreateElement("Project");
-            project.InnerText = "*梅毒螺旋体特异抗体测定（免疫法）";
-            item.AppendChild(project);
-
-            XmlElement specimen = doc.CreateElement("Specimen");
-            specimen.InnerText = "全血";
-            item.AppendChild(specimen);
-
-            XmlElement reprint = doc.CreateElement("Reprint");
-            reprint.InnerText = "";
-            item.AppendChild(reprint);
-
-            XmlElement isInstancy = doc.CreateElement("IsInstancy");
-            isInstancy.InnerText = "";
-            item.AppendChild(isInstancy);
+           
 
             #endregion
 
@@ -145,6 +122,47 @@ namespace 生成xml工具
             
         }
 
+
+
+
+        public void GetItem(XmlDocument doc, XmlElement itemList,
+            string BARCODE,string TUBECOLOR,string PROJECT,string SPECIMEN,string REPRINT,string ISINSTANCY)
+        {
+
+            XmlElement item = doc.CreateElement("Item");
+            itemList.AppendChild(item);
+
+            XmlElement barcode = doc.CreateElement("Barcode");
+            barcode.InnerText = BARCODE;
+            item.AppendChild(barcode);
+
+            XmlElement tubeColor = doc.CreateElement("TubeColor");
+            tubeColor.InnerText = TUBECOLOR;
+            item.AppendChild(tubeColor);
+
+            XmlElement project = doc.CreateElement("Project");
+            project.InnerText = PROJECT;
+            item.AppendChild(project);
+
+            XmlElement specimen = doc.CreateElement("Specimen");
+            specimen.InnerText = SPECIMEN;
+            item.AppendChild(specimen);
+
+            XmlElement reprint = doc.CreateElement("Reprint");
+            reprint.InnerText = REPRINT;
+            item.AppendChild(reprint);
+
+            XmlElement isInstancy = doc.CreateElement("IsInstancy");
+            isInstancy.InnerText = ISINSTANCY;
+            item.AppendChild(isInstancy);
+        }
+
+
+        /// <summary>
+        /// 选择路径  的触发事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
