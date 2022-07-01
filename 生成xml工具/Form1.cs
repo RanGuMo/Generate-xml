@@ -123,7 +123,8 @@ namespace 生成xml工具
             DateTime tim = DateTime.Parse(DateTime.Now.ToString());
             string tims = tim.ToString("yyyyMMddHHmmss");
             // 指定你要操作的目录. 
-            string path = @"D:\datalabs";
+            //string path = @"D:\datalabs";
+            string path = this.textBox1.Text;
             try
             {
                 // 判断目录是否存在. 
@@ -142,6 +143,19 @@ namespace 生成xml工具
             doc.Save(path+"/"+ tims+ ".xml");
             MessageBox.Show("保存成功");
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择文件路径";
+            //dialog.SelectedPath = path;
+            //dialog.RootFolder = Environment.SpecialFolder.Programs;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+                this.textBox1.Text = foldPath;
+            }
         }
     }
 }
