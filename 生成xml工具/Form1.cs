@@ -11,7 +11,7 @@ namespace 生成xml工具
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.textBox1.Text = @"D:\ZZDYTM";
 
 
         }
