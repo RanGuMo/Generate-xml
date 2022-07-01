@@ -55,8 +55,12 @@ namespace 生成xml工具
             XmlElement itemList = doc.CreateElement("ItemList");
             itemInfor.AppendChild(itemList);
 
-            //8.给ItemList 添加子节点(Item,如果有多个Item 就往这里加)
-            GetItem(doc, itemList, "0200112012", "紫管", "*梅毒螺旋体特异抗体测定（免疫法）", "全血", "", "");
+            int itemLength = int.Parse(comboBox1.Text);
+            for (int i = 0; i < itemLength; i++)
+            {
+                //8.给ItemList 添加子节点(Item,如果有多个Item 就往这里加)
+                GetItem(doc, itemList, "020011201"+i, GetRandomColor()+"管", i+"*梅毒螺旋体特异抗体测定（免疫法）"+i, "全血", "", "");
+            }
 
 
 
@@ -83,6 +87,25 @@ namespace 生成xml工具
             doc.Save(path + "/" + tims + ".xml");
             MessageBox.Show("保存成功");
 
+        }
+
+
+        public string  GetRandomColor()
+        {
+            Random rd = new Random();
+            int i = rd.Next(1, 10); //[1,10)
+            switch (i)
+            {
+                case 1:return "红";
+                case 2:return "橙";
+                case 3:return "黄";
+                case 4:return "绿";
+                case 5:return "紫";
+                case 6:return "蓝";
+                case 7:return "黑";
+                case 8:return "灰";
+                default:return "白";
+            }
         }
 
         private static void GetBaseInfo(XmlDocument doc, XmlElement baseInfo,
