@@ -45,13 +45,48 @@ namespace 生成xml工具
             XmlElement itemInfor = doc.CreateElement("ItemInfor");
             caseInfors.AppendChild(itemInfor);
 
-            #region 6, 给ItemInfor添加子节点(BaseInfo 和 ItemList)
+            // 6, 给ItemInfor添加子节点(BaseInfo 和 ItemList)
             XmlElement baseInfo = doc.CreateElement("BaseInfo");
             itemInfor.AppendChild(baseInfo);
 
+            //7, 给BaseInfo添加子节点
+            GetBaseInfo(doc, baseInfo);
 
-            #region  7, 给BaseInfo添加子节点
+            XmlElement itemList = doc.CreateElement("ItemList");
+            itemInfor.AppendChild(itemList);
 
+            //8.给ItemList 添加子节点(Item,如果有多个Item 就往这里加)
+            GetItem(doc, itemList, "0200112012", "紫管", "*梅毒螺旋体特异抗体测定（免疫法）", "全血", "", "");
+
+
+
+            DateTime tim = DateTime.Parse(DateTime.Now.ToString());
+            string tims = tim.ToString("yyyyMMddHHmmss");
+            // 指定你要操作的目录. 
+            //string path = @"D:\datalabs";
+            string path = this.textBox1.Text;
+            try
+            {
+                // 判断目录是否存在. 
+                if (!Directory.Exists(path))
+                {
+                    // 如果不存在就创建它. 
+                    Directory.CreateDirectory(path);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The process failed: {0}", ex.ToString());
+            }
+
+            doc.Save(path + "/" + tims + ".xml");
+            MessageBox.Show("保存成功");
+
+        }
+
+        private static void GetBaseInfo(XmlDocument doc, XmlElement baseInfo)
+        {
             XmlElement patientID = doc.CreateElement("PatientID");
             patientID.InnerText = "2352628";
             baseInfo.AppendChild(patientID);
@@ -79,51 +114,7 @@ namespace 生成xml工具
             XmlElement doctor = doc.CreateElement("Doctor");
             doctor.InnerText = "蒋先红";
             baseInfo.AppendChild(doctor);
-
-            #endregion
-
-
-
-            XmlElement itemList = doc.CreateElement("ItemList");
-            itemInfor.AppendChild(itemList);
-
-            #region 8.给ItemList 添加子节点(Item)
-
-            GetItem(doc, itemList, "0200112012", "紫管", "*梅毒螺旋体特异抗体测定（免疫法）", "全血", "", "");
-
-           
-
-            #endregion
-
-            #endregion
-
-            DateTime tim = DateTime.Parse(DateTime.Now.ToString());
-            string tims = tim.ToString("yyyyMMddHHmmss");
-            // 指定你要操作的目录. 
-            //string path = @"D:\datalabs";
-            string path = this.textBox1.Text;
-            try
-            {
-                // 判断目录是否存在. 
-                if (!Directory.Exists(path))
-                {
-                    // 如果不存在就创建它. 
-                    Directory.CreateDirectory(path);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("The process failed: {0}", ex.ToString());
-            }
-
-            doc.Save(path+"/"+ tims+ ".xml");
-            MessageBox.Show("保存成功");
-            
         }
-
-
-
 
         public void GetItem(XmlDocument doc, XmlElement itemList,
             string BARCODE,string TUBECOLOR,string PROJECT,string SPECIMEN,string REPRINT,string ISINSTANCY)
