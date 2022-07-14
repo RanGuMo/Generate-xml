@@ -9,6 +9,8 @@ namespace 生成xml工具
             InitializeComponent();
         }
 
+        string printDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
+
         private void Form1_Load(object sender, EventArgs e)
         {
             #region 初始化数据
@@ -22,7 +24,7 @@ namespace 生成xml工具
             txtDoctorName.Text = "蒋先红";
             comboBox1.Text = "3";
             #endregion
-            
+
 
 
         }
@@ -62,7 +64,7 @@ namespace 生成xml工具
 
             //7, 给BaseInfo添加子节点
             //GetBaseInfo(doc, baseInfo, "2352628", "小儿科", "罗玺琳", "女", "17岁10个月5天", "2022.04.10 14:14:56", "蒋先红");
-            GetBaseInfo(doc, baseInfo, txtPatientID.Text, txtDept.Text, txtName.Text, txtSex.Text, txtAge.Text, "2022.04.10 14:14:56", txtDoctorName.Text);
+            GetBaseInfo(doc, baseInfo, txtPatientID.Text, txtDept.Text, txtName.Text, txtSex.Text, txtAge.Text, printDate, txtDoctorName.Text);
 
             XmlElement itemList = doc.CreateElement("ItemList");
             itemInfor.AppendChild(itemList);
@@ -97,7 +99,7 @@ namespace 生成xml工具
             }
 
             doc.Save(path + "/" + tims + ".xml");
-            MessageBox.Show("保存成功");
+            MessageBox.Show("生成XML文件成功");
 
         }
 
