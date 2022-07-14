@@ -11,7 +11,18 @@ namespace 生成xml工具
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            #region 初始化数据
+
             this.textBox1.Text = @"D:\ZZDYTM";
+            txtPatientID.Text = "2352628";
+            txtDept.Text = "小儿科";
+            txtName.Text = "罗玺琳";
+            txtSex.Text = "女";
+            txtAge.Text = "17岁10个月5天";
+            txtDoctorName.Text = "蒋先红";
+            comboBox1.Text = "3";
+            #endregion
+            
 
 
         }
@@ -50,7 +61,8 @@ namespace 生成xml工具
             itemInfor.AppendChild(baseInfo);
 
             //7, 给BaseInfo添加子节点
-            GetBaseInfo(doc, baseInfo, "2352628", "小儿科", "罗玺琳", "女", "17岁10个月5天", "2022.04.10 14:14:56", "蒋先红");
+            //GetBaseInfo(doc, baseInfo, "2352628", "小儿科", "罗玺琳", "女", "17岁10个月5天", "2022.04.10 14:14:56", "蒋先红");
+            GetBaseInfo(doc, baseInfo, txtPatientID.Text, txtDept.Text, txtName.Text, txtSex.Text, txtAge.Text, "2022.04.10 14:14:56", txtDoctorName.Text);
 
             XmlElement itemList = doc.CreateElement("ItemList");
             itemInfor.AppendChild(itemList);
