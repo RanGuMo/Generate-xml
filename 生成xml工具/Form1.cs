@@ -10,7 +10,7 @@ namespace 生成xml工具
         }
 
         string printDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
-
+        Random rd = new Random();
         private void Form1_Load(object sender, EventArgs e)
         {
             #region 初始化数据
@@ -73,7 +73,7 @@ namespace 生成xml工具
             for (int i = 0; i < itemLength; i++)
             {
                 //8.给ItemList 添加子节点(Item,如果有多个Item 就往这里加)
-                GetItem(doc, itemList, "020011201"+i, GetRandomColor()+"管", i+"*梅毒螺旋体特异抗体测定（免疫法）"+i, "全血", "", "");
+                GetItem(doc, itemList, "020011201"+i, GetRandomColor()+"管", i+"*梅毒螺旋体特异抗体测定（免疫法）"+i, GetRandomSpecimen(), "", "");
             }
 
 
@@ -106,7 +106,7 @@ namespace 生成xml工具
 
         public string  GetRandomColor()
         {
-            Random rd = new Random();
+           
             int i = rd.Next(1, 10); //[1,10)
             switch (i)
             {
@@ -119,6 +119,19 @@ namespace 生成xml工具
                 case 7:return "黑";
                 case 8:return "灰";
                 default:return "白";
+            }
+        }
+        public string GetRandomSpecimen()
+        {
+           
+            int i = rd.Next(1, 5); //[1,5)
+            switch (i)
+            {
+                case 1: return "全血";
+                case 2: return "尿液";
+                case 3: return "血清";
+                case 4: return "血浆";
+                default: return "全血";
             }
         }
 
