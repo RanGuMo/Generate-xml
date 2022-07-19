@@ -94,7 +94,7 @@ namespace 生成xml工具
             }
 
             doc.Save(path + "/" + tims + ".xml");
-            MessageBox.Show("生成XML文件成功");
+            MessageBox.Show("生成"+ tims + ".XML文件成功");
 
         }
 
