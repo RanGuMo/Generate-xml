@@ -9,8 +9,8 @@ namespace 生成xml工具
             InitializeComponent();
         }
 
-        string printDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
-        Random rd = new Random();
+        string printDate = DateTime.Now.ToString(format: "yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
+        Random rd = new Random();// 随机数
         private void Form1_Load(object sender, EventArgs e)
         {
             #region 初始化数据
@@ -24,8 +24,6 @@ namespace 生成xml工具
             txtDoctorName.Text = "蒋先红";
             comboBox1.Text = "3";
             #endregion
-
-
 
         }
 
@@ -76,10 +74,7 @@ namespace 生成xml工具
                 GetItem(doc, itemList, "020011201"+i, GetRandomColor()+"管", i+"*梅毒螺旋体特异抗体测定（免疫法）"+i, GetRandomSpecimen(), "", "");
             }
 
-
-
-            DateTime tim = DateTime.Parse(DateTime.Now.ToString());
-            string tims = tim.ToString("yyyyMMddHHmmss");
+            string tims = DateTime.Now.ToString("yyyyMMddHHmmss");
             // 指定你要操作的目录. 
             //string path = @"D:\datalabs";
             string path = this.textBox1.Text;
