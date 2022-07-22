@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Xml;
 
 namespace 生成xml工具
@@ -25,7 +26,56 @@ namespace 生成xml工具
             comboBox1.Text = "3";
             #endregion
 
+            #region 读取App.config 中的内容
+
+            Console.WriteLine("ConnectionStrings:");
+            // ConfigurationManager.ConnectionStrings是一个ConnectionStringSettingsCollection对象
+            // 按数字循环得到一个个ConnectionStringSettings对象
+            // 每个ConnectionStringSettings对象有Name和ConnectionString属性
+            for (int i = 0; i < ConfigurationManager.ConnectionStrings.Count; i++)
+            {
+                string name = ConfigurationManager.ConnectionStrings[i].Name;
+                string connectionString = ConfigurationManager.ConnectionStrings[i].ConnectionString;
+                Console.WriteLine(i.ToString() + ". " + name + " = " + connectionString);
+            }
+            //也可以如下操作，使用ConnectionStringSettings类型来进行foreach遍历
+            foreach (ConnectionStringSettings conn in ConfigurationManager.ConnectionStrings)
+            {
+                string name = conn.Name;
+                string connectionString = conn.ConnectionString;
+                Console.WriteLine(name + " = " + connectionString);
+            }
+            //直接获取conn的值
+            Console.WriteLine("\r\nGet the value of the node named \"conn\":");
+            Console.WriteLine(ConfigurationManager.ConnectionStrings["conn"].ConnectionString);
+            Console.WriteLine("");
+
+            Console.WriteLine("AppSettings:");
+            //AppSettings是NameValueConnection类型，使用AllKeys返回一个所有Key组成的字符串数组
+            string[] keys = ConfigurationManager.AppSettings.AllKeys;
+            for (int i = 0; i < keys.Length; i++)
+            {
+                string key = keys[i];
+                //通过Key来索引Value
+                string value = ConfigurationManager.AppSettings[key];
+                Console.WriteLine(i.ToString() + ". " + key + " = " + value);
+            }
+            // 没有NameValuePair这样的对象，所以无法使用foreach来进行循环
+
+            //直接获取key1的值
+            Console.WriteLine("\r\nGet the value of the key named \"key1\":");
+            Console.WriteLine(ConfigurationManager.AppSettings["key1"]);
+
+          
+
+
+            #endregion
+
+
+
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -94,7 +144,7 @@ namespace 生成xml工具
             }
 
             doc.Save(path + "/" + tims + ".xml");
-            MessageBox.Show("生成"+ tims + ".XML文件成功");
+            MessageBox.Show("生成"+ tims + ".xml文件成功");
 
         }
 
