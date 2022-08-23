@@ -50,12 +50,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tBtime = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.labTime = new System.Windows.Forms.Label();
             this.labProMun = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.tBtime = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.tBtime)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -241,14 +242,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tBtime
-            // 
-            this.tBtime.Location = new System.Drawing.Point(604, 267);
-            this.tBtime.Name = "tBtime";
-            this.tBtime.Size = new System.Drawing.Size(125, 27);
-            this.tBtime.TabIndex = 28;
-            this.tBtime.Text = "10000";
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -295,17 +288,44 @@
             this.label12.TabIndex = 32;
             this.label12.Text = "文件数量：";
             // 
+            // tBtime
+            // 
+            this.tBtime.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.tBtime.Location = new System.Drawing.Point(616, 272);
+            this.tBtime.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.tBtime.Minimum = new decimal(new int[] {
+            15000,
+            0,
+            0,
+            0});
+            this.tBtime.Name = "tBtime";
+            this.tBtime.Size = new System.Drawing.Size(150, 27);
+            this.tBtime.TabIndex = 34;
+            this.tBtime.Value = new decimal(new int[] {
+            15000,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tBtime);
             this.Controls.Add(this.labProMun);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labTime);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.tBtime);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtAge);
@@ -330,6 +350,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "自动生成json文件";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tBtime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,11 +379,11 @@
         private Button button3;
         private Label label9;
         private System.Windows.Forms.Timer timer1;
-        private TextBox tBtime;
         private CheckBox checkBox1;
         private Label label10;
         private Label labTime;
         private Label labProMun;
         private Label label12;
+        private NumericUpDown tBtime;
     }
 }
