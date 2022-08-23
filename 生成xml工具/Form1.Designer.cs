@@ -50,12 +50,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tBtime = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.labTime = new System.Windows.Forms.Label();
             this.labProMun = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.tBtime = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.tBtime)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -231,7 +232,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(526, 274);
+            this.label9.Location = new System.Drawing.Point(526, 236);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 20);
             this.label9.TabIndex = 27;
@@ -241,18 +242,10 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // tBtime
-            // 
-            this.tBtime.Location = new System.Drawing.Point(604, 267);
-            this.tBtime.Name = "tBtime";
-            this.tBtime.Size = new System.Drawing.Size(125, 27);
-            this.tBtime.TabIndex = 28;
-            this.tBtime.Text = "10000";
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(526, 351);
+            this.checkBox1.Location = new System.Drawing.Point(526, 313);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(181, 24);
             this.checkBox1.TabIndex = 29;
@@ -263,7 +256,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(526, 317);
+            this.label10.Location = new System.Drawing.Point(526, 279);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 20);
             this.label10.TabIndex = 30;
@@ -272,7 +265,7 @@
             // labTime
             // 
             this.labTime.AutoSize = true;
-            this.labTime.Location = new System.Drawing.Point(616, 317);
+            this.labTime.Location = new System.Drawing.Point(616, 279);
             this.labTime.Name = "labTime";
             this.labTime.Size = new System.Drawing.Size(0, 20);
             this.labTime.TabIndex = 31;
@@ -280,7 +273,7 @@
             // labProMun
             // 
             this.labProMun.AutoSize = true;
-            this.labProMun.Location = new System.Drawing.Point(616, 230);
+            this.labProMun.Location = new System.Drawing.Point(616, 192);
             this.labProMun.Name = "labProMun";
             this.labProMun.Size = new System.Drawing.Size(18, 20);
             this.labProMun.TabIndex = 33;
@@ -289,23 +282,50 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(526, 230);
+            this.label12.Location = new System.Drawing.Point(526, 192);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 20);
             this.label12.TabIndex = 32;
             this.label12.Text = "文件数量：";
+            // 
+            // tBtime
+            // 
+            this.tBtime.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.tBtime.Location = new System.Drawing.Point(616, 234);
+            this.tBtime.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.tBtime.Minimum = new decimal(new int[] {
+            40000,
+            0,
+            0,
+            0});
+            this.tBtime.Name = "tBtime";
+            this.tBtime.Size = new System.Drawing.Size(150, 27);
+            this.tBtime.TabIndex = 34;
+            this.tBtime.Value = new decimal(new int[] {
+            40000,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tBtime);
             this.Controls.Add(this.labProMun);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labTime);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.tBtime);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtAge);
@@ -328,8 +348,9 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "自动生成json文件";
+            this.Text = "生成json-xml文件";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tBtime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,11 +379,11 @@
         private Button button3;
         private Label label9;
         private System.Windows.Forms.Timer timer1;
-        private TextBox tBtime;
         private CheckBox checkBox1;
         private Label label10;
         private Label labTime;
         private Label labProMun;
         private Label label12;
+        private NumericUpDown tBtime;
     }
 }
