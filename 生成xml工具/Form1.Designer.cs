@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,11 +47,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tBtime = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.labTime = new System.Windows.Forms.Label();
+            this.labProMun = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(294, 325);
+            this.button1.Location = new System.Drawing.Point(94, 307);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 41);
             this.button1.TabIndex = 0;
@@ -60,7 +70,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(294, 292);
+            this.textBox1.Location = new System.Drawing.Point(94, 181);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(222, 27);
             this.textBox1.TabIndex = 1;
@@ -68,7 +78,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(215, 295);
+            this.label1.Location = new System.Drawing.Point(15, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 2;
@@ -76,7 +86,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(537, 292);
+            this.button2.Location = new System.Drawing.Point(337, 181);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 29);
             this.button2.TabIndex = 3;
@@ -98,7 +108,7 @@
             "8",
             "9",
             "10"});
-            this.comboBox1.Location = new System.Drawing.Point(294, 236);
+            this.comboBox1.Location = new System.Drawing.Point(94, 125);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 28);
             this.comboBox1.TabIndex = 4;
@@ -106,7 +116,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(215, 239);
+            this.label2.Location = new System.Drawing.Point(15, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 5;
@@ -208,11 +218,96 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "年龄:";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(281, 307);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(163, 41);
+            this.button3.TabIndex = 25;
+            this.button3.Text = "点击生成json文件";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(526, 274);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 20);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "时间间隔：";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tBtime
+            // 
+            this.tBtime.Location = new System.Drawing.Point(604, 267);
+            this.tBtime.Name = "tBtime";
+            this.tBtime.Size = new System.Drawing.Size(125, 27);
+            this.tBtime.TabIndex = 28;
+            this.tBtime.Text = "10000";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(526, 351);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(181, 24);
+            this.checkBox1.TabIndex = 29;
+            this.checkBox1.Text = "开启自动生成json文件";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(526, 317);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(84, 20);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "剩余时间：";
+            // 
+            // labTime
+            // 
+            this.labTime.AutoSize = true;
+            this.labTime.Location = new System.Drawing.Point(616, 317);
+            this.labTime.Name = "labTime";
+            this.labTime.Size = new System.Drawing.Size(0, 20);
+            this.labTime.TabIndex = 31;
+            // 
+            // labProMun
+            // 
+            this.labProMun.AutoSize = true;
+            this.labProMun.Location = new System.Drawing.Point(616, 230);
+            this.labProMun.Name = "labProMun";
+            this.labProMun.Size = new System.Drawing.Size(18, 20);
+            this.labProMun.TabIndex = 33;
+            this.labProMun.Text = "0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(526, 230);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 20);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "文件数量：";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labProMun);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.labTime);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.tBtime);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDoctorName);
@@ -233,7 +328,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "生成Xml文件";
+            this.Text = "自动生成json文件";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,5 +355,14 @@
         private Label label4;
         private TextBox txtAge;
         private Label label7;
+        private Button button3;
+        private Label label9;
+        private System.Windows.Forms.Timer timer1;
+        private TextBox tBtime;
+        private CheckBox checkBox1;
+        private Label label10;
+        private Label labTime;
+        private Label labProMun;
+        private Label label12;
     }
 }
