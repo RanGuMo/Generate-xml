@@ -20,7 +20,7 @@ namespace 生成xml工具
             this.textBox1.Text = @"D:\datalab";
             txtPatientID.Text = "2352628";
             txtDept.Text = "体检科";
-            txtName.Text = "李德胜";
+            txtName.Text = "李明钰";
             txtSex.Text = "男";
             txtAge.Text = "23岁10月";
             txtDoctorName.Text = "吴宗盛";
@@ -201,6 +201,15 @@ namespace 生成xml工具
             {
                 case 1: return "";
                 default: return "0";
+            }
+        }
+        private string GetRandomSex()
+        {
+            int i = rd.Next(0, 2); //[1,5)
+            switch (i)
+            {
+                case 1: return "男";
+                default: return "女";
             }
         }
         private static void GetData(XmlDocument doc, XmlElement itemList,
@@ -433,8 +442,8 @@ namespace 生成xml工具
                 string patientId = random(int.Parse(txtPatientID.Text), int.Parse(txtPatientID.Text + 0)).ToString();
                 string patientNmae = txtName.Text;
                 string patientDept = txtDept.Text;
-                string patientSex = txtSex.Text;
-                string patientAge = txtAge.Text;
+                string patientSex = GetRandomSex(); //txtSex.Text;
+                string patientAge = random(1, 100) + "岁" + random(1, 13)+"月";//txtAge.Text;
                 string doctor = txtDoctorName.Text;
                 string printDate = DateTime.Now.ToString(format: "yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
                 for (int i = 0; i < itemLength; i++)
@@ -473,6 +482,9 @@ namespace 生成xml工具
                 Console.WriteLine("The process failed: {0}", ex.ToString());
             }
         }
+
+        
+
         public void WriteJsonFile(string jsonConents)
         {
             try
