@@ -323,7 +323,7 @@
             this.tBCode.Name = "tBCode";
             this.tBCode.Size = new System.Drawing.Size(125, 27);
             this.tBCode.TabIndex = 35;
-            this.tBCode.Text = "10000";
+            this.tBCode.Text = "100000";
             this.tBCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBCode_KeyPress);
             // 
             // label11

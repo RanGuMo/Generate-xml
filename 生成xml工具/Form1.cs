@@ -249,7 +249,7 @@ namespace 生成xml工具
             pitem.AppendChild(SampleType);
 
             XmlElement Mark = doc.CreateElement("Mark");
-            Mark.InnerText = "";
+            Mark.InnerText = patientType;
             pitem.AppendChild(Mark);
 
             XmlElement RequestTime = doc.CreateElement("RequestTime");
