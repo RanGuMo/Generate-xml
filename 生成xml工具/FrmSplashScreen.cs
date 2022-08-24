@@ -24,7 +24,7 @@ namespace 生成xml工具
 
         private void timerProgressbar_Tick(object sender, EventArgs e)
         {
-            panelProgressbar.Width += 10;
+            panelProgressbar.Width += 15;
             if (panelProgressbar.Width>=700)
             {
                 this.DialogResult = DialogResult.OK;

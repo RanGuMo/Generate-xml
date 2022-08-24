@@ -58,7 +58,10 @@
             this.tBtime = new System.Windows.Forms.NumericUpDown();
             this.tBCode = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.proMun = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.tBtime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proMun)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -73,7 +76,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 181);
+            this.textBox1.Location = new System.Drawing.Point(94, 248);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(222, 27);
             this.textBox1.TabIndex = 1;
@@ -81,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 184);
+            this.label1.Location = new System.Drawing.Point(15, 251);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 2;
@@ -89,7 +92,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(337, 181);
+            this.button2.Location = new System.Drawing.Point(337, 248);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 29);
             this.button2.TabIndex = 3;
@@ -335,11 +338,49 @@
             this.label11.TabIndex = 36;
             this.label11.Text = "条码长度: 2X位数";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(12, 192);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(88, 20);
+            this.label13.TabIndex = 37;
+            this.label13.Text = "项目最大数:";
+            // 
+            // proMun
+            // 
+            this.proMun.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.proMun.Location = new System.Drawing.Point(108, 185);
+            this.proMun.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.proMun.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.proMun.Name = "proMun";
+            this.proMun.Size = new System.Drawing.Size(150, 27);
+            this.proMun.TabIndex = 38;
+            this.proMun.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.proMun);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tBCode);
             this.Controls.Add(this.tBtime);
@@ -373,6 +414,7 @@
             this.Text = "生成json-xml文件";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tBtime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.proMun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +451,7 @@
         private NumericUpDown tBtime;
         private TextBox tBCode;
         private Label label11;
+        private Label label13;
+        private NumericUpDown proMun;
     }
 }
