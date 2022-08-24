@@ -17,13 +17,13 @@ namespace 生成xml工具
         {
             #region 初始化数据
 
-            this.textBox1.Text = @"D:\ZZDYTM";
+            this.textBox1.Text = @"D:\datalab";
             txtPatientID.Text = "2352628";
-            txtDept.Text = "小儿科";
-            txtName.Text = "罗玺琳";
-            txtSex.Text = "女";
-            txtAge.Text = "17岁10个月5天";
-            txtDoctorName.Text = "蒋先红";
+            txtDept.Text = "体检科";
+            txtName.Text = "李德胜";
+            txtSex.Text = "男";
+            txtAge.Text = "23岁10月";
+            txtDoctorName.Text = "吴宗盛";
             comboBox1.Text = "3";
             #endregion
 
@@ -180,11 +180,33 @@ namespace 生成xml工具
                 default: return "全血";
             }
         }
+        public string GetRandomType()
+        {
 
+            int i = rd.Next(1, 5); //[1,5)
+            switch (i)
+            {
+                case 1: return "PCR";
+                case 2: return "发光-肿";
+                case 3: return "生化";
+                case 4: return "免疫";
+                default: return "临检";
+            }
+        }
+        public string GetRandomIsInstance()
+        {
+
+            int i = rd.Next(0, 2); //[1,5)
+            switch (i)
+            {
+                case 1: return "";
+                default: return "0";
+            }
+        }
         private static void GetData(XmlDocument doc, XmlElement itemList,
             string PatientID, string Dept, string Name, string Sex, string Age, string PrintDate, string Doctor
-            , string BARCODE, string TUBECOLOR, string PROJECT, string sampleType, string REPRINT, string ISINSTANCY
-            , string patientType, string sampleType1, string emergency
+            , string BARCODE, string TUBECOLOR, string PROJECT, string sampleType, string REPRINT, string emergency
+            , string patientType
             )
         {
             XmlElement pitem = doc.CreateElement("returnContent");
@@ -247,7 +269,7 @@ namespace 生成xml工具
             pitem.AppendChild(Emergency);
 
             XmlElement isInstancy = doc.CreateElement("IsInstancy");
-            isInstancy.InnerText = ISINSTANCY;
+            isInstancy.InnerText = emergency;
             pitem.AppendChild(isInstancy);
 
 
@@ -405,13 +427,28 @@ namespace 生成xml工具
                 int itemLength = int.Parse(comboBox1.Text);
                 if (checkBox1.Checked == true)
                 {
-                    itemLength = random();
+                    itemLength = random(1,10);
                 }
-
+                //只随机获取一次的
+                string patientId = random(int.Parse(txtPatientID.Text), int.Parse(txtPatientID.Text + 0)).ToString();
+                string patientNmae = txtName.Text;
+                string patientDept = txtDept.Text;
+                string patientSex = txtSex.Text;
+                string patientAge = txtAge.Text;
+                string doctor = txtDoctorName.Text;
+                string printDate = DateTime.Now.ToString(format: "yyyy.MM.dd HH:mm:ss");//2022.04.10 14:14:56
                 for (int i = 0; i < itemLength; i++)
                 {
-                    GetData(doc, caseInfors, txtPatientID.Text, txtDept.Text, txtName.Text, txtSex.Text, txtAge.Text
-                           , printDate, txtDoctorName.Text, "020011201" + i, GetRandomColor() + "管", i + "*梅毒螺旋体特异抗体测定（免疫法）" + i, GetRandomSpecimen(), "", "", "", "", "");
+                    //随机获取多次
+                    string barcode = random(int.Parse(tBCode.Text), int.Parse(tBCode.Text + 0)).ToString() + random(int.Parse(tBCode.Text), int.Parse(tBCode.Text + 0));
+                    string tubeColor = GetRandomColor() + "管";
+                    string project = "全血五分类;肝功能"+i +"项"+ random(1000,10000);
+                    string sampleName = GetRandomSpecimen();
+                    string isInstancy = GetRandomIsInstance();//紧急
+                    string type = GetRandomType();
+
+                    GetData(doc, caseInfors, patientId, patientDept, patientNmae, patientSex, patientAge
+                           , printDate, doctor, barcode, tubeColor, project, sampleName,"", isInstancy,type);
                 }
                 string tims = DateTime.Now.ToString("yyyyMMddHHmmss");
                 // 指定你要操作的目录. 
@@ -460,10 +497,10 @@ namespace 生成xml工具
             }
         }
         //随机数
-        public int random()
+        public int random(int minvalue,int maxvalue)
         {
             Random r = new Random();
-            return r.Next(1, 10);
+            return r.Next(minvalue, maxvalue);
         }
 
         public void Delay(int milliSecond)
@@ -538,6 +575,37 @@ namespace 生成xml工具
             {
                 timer1.Stop();
             }
+        }
+        //校验
+        private void tBCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //阻止从键盘输入键
+            e.Handled = true;
+
+            //当输入为0-9的数字、小数点、回车和退格键时不阻止e.KeyChar == '.'||
+            if (e.KeyChar >= '0' && e.KeyChar <= '9' ||  e.KeyChar == 13 || e.KeyChar == (char)8)
+            {
+                e.Handled = false;
+            }
+            //if (e.KeyChar < 48 || e.KeyChar > 57)
+
+            //{
+
+            //    if (e.KeyChar != 8 && e.KeyChar != 13 && e.KeyChar != 46)
+
+            //    {
+
+            //        MessageBox.Show("警告：必须输入数字！");
+
+            //        tBCode.Focus();
+
+            //        tBCode.SelectAll();
+
+            //        e.KeyChar = '\0';
+
+            //    }
+
+            //}
         }
     }
 }

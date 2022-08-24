@@ -56,6 +56,8 @@
             this.labProMun = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tBtime = new System.Windows.Forms.NumericUpDown();
+            this.tBCode = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tBtime)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,13 +130,13 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 20);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "门诊号:";
+            this.label3.Text = "门诊号长度：";
             // 
             // txtPatientID
             // 
-            this.txtPatientID.Location = new System.Drawing.Point(94, 6);
+            this.txtPatientID.Location = new System.Drawing.Point(108, 6);
             this.txtPatientID.Name = "txtPatientID";
             this.txtPatientID.Size = new System.Drawing.Size(125, 27);
             this.txtPatientID.TabIndex = 8;
@@ -315,11 +317,31 @@
             0,
             0});
             // 
+            // tBCode
+            // 
+            this.tBCode.Location = new System.Drawing.Point(598, 121);
+            this.tBCode.Name = "tBCode";
+            this.tBCode.Size = new System.Drawing.Size(125, 27);
+            this.tBCode.TabIndex = 35;
+            this.tBCode.Text = "10000";
+            this.tBCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBCode_KeyPress);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(463, 124);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(126, 20);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "条码长度: 2X位数";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.tBCode);
             this.Controls.Add(this.tBtime);
             this.Controls.Add(this.labProMun);
             this.Controls.Add(this.label12);
@@ -385,5 +407,7 @@
         private Label labProMun;
         private Label label12;
         private NumericUpDown tBtime;
+        private TextBox tBCode;
+        private Label label11;
     }
 }
