@@ -436,7 +436,7 @@ namespace 生成xml工具
                 int itemLength = int.Parse(comboBox1.Text);
                 if (checkBox1.Checked == true)
                 {
-                    itemLength = random(1,10);
+                    itemLength = random(1, int.Parse(proMun.Value.ToString()));
                 }
                 //只随机获取一次的
                 string patientId = random(int.Parse(txtPatientID.Text), int.Parse(txtPatientID.Text + 0)).ToString();
