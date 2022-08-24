@@ -62,7 +62,7 @@
             // 
             // panelProgressbar
             // 
-            this.panelProgressbar.BackColor = System.Drawing.Color.OrangeRed;
+            this.panelProgressbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(206)))), ((int)(((byte)(142)))));
             this.panelProgressbar.Location = new System.Drawing.Point(0, 0);
             this.panelProgressbar.Name = "panelProgressbar";
             this.panelProgressbar.Size = new System.Drawing.Size(42, 20);
