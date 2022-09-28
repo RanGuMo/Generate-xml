@@ -60,6 +60,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.proMun = new System.Windows.Forms.NumericUpDown();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.tBtext = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tBtime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proMun)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +78,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 248);
+            this.textBox1.Location = new System.Drawing.Point(373, 124);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(222, 27);
             this.textBox1.TabIndex = 1;
@@ -84,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 251);
+            this.label1.Location = new System.Drawing.Point(294, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
             this.label1.TabIndex = 2;
@@ -92,7 +94,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(337, 248);
+            this.button2.Location = new System.Drawing.Point(616, 124);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 29);
             this.button2.TabIndex = 3;
@@ -122,7 +124,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 128);
+            this.label2.Location = new System.Drawing.Point(12, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 5;
@@ -237,7 +239,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(526, 236);
+            this.label9.Location = new System.Drawing.Point(517, 236);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 20);
             this.label9.TabIndex = 27;
@@ -261,7 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(526, 279);
+            this.label10.Location = new System.Drawing.Point(517, 279);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(84, 20);
             this.label10.TabIndex = 30;
@@ -287,7 +289,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(526, 192);
+            this.label12.Location = new System.Drawing.Point(517, 192);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 20);
             this.label12.TabIndex = 32;
@@ -322,7 +324,7 @@
             // 
             // tBCode
             // 
-            this.tBCode.Location = new System.Drawing.Point(598, 121);
+            this.tBCode.Location = new System.Drawing.Point(159, 227);
             this.tBCode.Name = "tBCode";
             this.tBCode.Size = new System.Drawing.Size(125, 27);
             this.tBCode.TabIndex = 35;
@@ -332,7 +334,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(463, 124);
+            this.label11.Location = new System.Drawing.Point(12, 234);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 20);
             this.label11.TabIndex = 36;
@@ -341,7 +343,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 192);
+            this.label13.Location = new System.Drawing.Point(12, 178);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(88, 20);
             this.label13.TabIndex = 37;
@@ -349,12 +351,7 @@
             // 
             // proMun
             // 
-            this.proMun.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.proMun.Location = new System.Drawing.Point(108, 185);
+            this.proMun.Location = new System.Drawing.Point(127, 176);
             this.proMun.Maximum = new decimal(new int[] {
             20,
             0,
@@ -374,11 +371,31 @@
             0,
             0});
             // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(12, 275);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(91, 24);
+            this.checkBox2.TabIndex = 39;
+            this.checkBox2.Text = "语音播报";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // tBtext
+            // 
+            this.tBtext.Location = new System.Drawing.Point(109, 272);
+            this.tBtext.Name = "tBtext";
+            this.tBtext.Size = new System.Drawing.Size(341, 27);
+            this.tBtext.TabIndex = 40;
+            this.tBtext.Text = "注意了！注意了！马上生成文件了！";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tBtext);
+            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.proMun);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
@@ -411,7 +428,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "生成json-xml文件";
+            this.Text = "生成json-xml文件工具";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tBtime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.proMun)).EndInit();
@@ -453,5 +470,7 @@
         private Label label11;
         private Label label13;
         private NumericUpDown proMun;
+        private CheckBox checkBox2;
+        private TextBox tBtext;
     }
 }

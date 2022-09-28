@@ -52,7 +52,7 @@
             // 
             // panelProgressbarContainer
             // 
-            this.panelProgressbarContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(138)))), ((int)(((byte)(69)))));
+            this.panelProgressbarContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(193)))), ((int)(((byte)(59)))));
             this.panelProgressbarContainer.Controls.Add(this.panelProgressbar);
             this.panelProgressbarContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelProgressbarContainer.Location = new System.Drawing.Point(0, 333);

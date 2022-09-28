@@ -1,6 +1,8 @@
 using System.Configuration;
+using System.Drawing.Printing;
 using System.Xml;
 using Newtonsoft.Json;
+using SpeechLib;
 
 namespace 生成xml工具
 {
@@ -218,6 +220,7 @@ namespace 生成xml工具
             , string patientType
             )
         {
+            //4,给根节点data创建子节点, 并将returnContent加入根节点
             XmlElement pitem = doc.CreateElement("returnContent");
             itemList.AppendChild(pitem);
 
@@ -404,34 +407,17 @@ namespace 生成xml工具
         {
             try
             {
-                //2,创建XML文档对象
+                //1,创建XML文档对象
                 XmlDocument doc = new XmlDocument();
 
-                //3,创建第一个行描述信息, 并且添加到doc文档中
-                //XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "utf-8", null);
-                //doc.AppendChild(dec);
+                //2,创建根节点,并将根节点加入到文档中
+                XmlElement data = doc.CreateElement("data");
+                doc.AppendChild(data);
 
-                //4,创建根节点,并将根节点加入到文档中
-                XmlElement caseInfors = doc.CreateElement("data");
-                doc.AppendChild(caseInfors);
-
-                //5,给根节点CaseInfors创建子节点, 并将ResultStatus加入根节点
-                XmlElement resultStatus = doc.CreateElement("code");
-                resultStatus.InnerText = "成功";
-                caseInfors.AppendChild(resultStatus);
-
-                //5,给根节点CaseInfors创建子节点, 并将ItemInfor加入根节点
-                //XmlElement itemInfor = doc.CreateElement("returnContent");
-                //caseInfors.AppendChild(itemInfor);
-
-                // 6, 给ItemInfor添加子节点(BaseInfo 和 ItemList)
-
-
-                //7, 给BaseInfo添加子节点
-                //GetBaseInfo(doc, baseInfo, "2352628", "小儿科", "罗玺琳", "女", "17岁10个月5天", "2022.04.10 14:14:56", "蒋先红");
-
-                //XmlElement itemList = doc.CreateElement("returnContent");
-                //caseInfors.AppendChild(itemList);
+                //3,给根节点data创建子节点, 并将code加入根节点
+                XmlElement code = doc.CreateElement("code");
+                code.InnerText = "成功";
+                data.AppendChild(code);
 
                 int itemLength = int.Parse(comboBox1.Text);
                 if (checkBox1.Checked == true)
@@ -456,7 +442,7 @@ namespace 生成xml工具
                     string isInstancy = GetRandomIsInstance();//紧急
                     string type = GetRandomType();
 
-                    GetData(doc, caseInfors, patientId, patientDept, patientNmae, patientSex, patientAge
+                    GetData(doc, data, patientId, patientDept, patientNmae, patientSex, patientAge
                            , printDate, doctor, barcode, tubeColor, project, sampleName,"", isInstancy,type);
                 }
                 string tims = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -483,7 +469,21 @@ namespace 生成xml工具
             }
         }
 
-        
+        public void print() {
+            PrintDocument print = new PrintDocument();
+            string sDefault = print.PrinterSettings.PrinterName;//默认打印机名
+            //comboBox_drive.Items.Add(sDefault);
+
+            //comboBox_drive.Text = sDefault;//显示默认驱动名称
+            foreach (string sPrint in PrinterSettings.InstalledPrinters)//获取所有打印机名称
+            {
+                if (sPrint != sDefault)
+                {
+                   // comboBox_drive.Items.Add(sPrint);
+                }
+            }
+
+        }
 
         public void WriteJsonFile(string jsonConents)
         {
@@ -496,7 +496,7 @@ namespace 生成xml工具
                     using (StreamWriter sw = new StreamWriter(fs, System.Text.Encoding.UTF8))
                     {
                         sw.WriteLine(jsonConents);
-                        labProMun.Text = (1 + int.Parse(labProMun.Text)).ToString();
+                        labProMun.Text = (1 + int.Parse(labProMun.Text)).ToString();//记录生成的个数
                         //return Json(new { Result = "成功" });
                     }
                 }
@@ -520,7 +520,9 @@ namespace 生成xml工具
             int start = Environment.TickCount;
             while (Math.Abs(Environment.TickCount - start) < milliSecond)//毫秒
             {
+                
                 int times1 = (milliSecond - Math.Abs(Environment.TickCount - start));
+               
                 if (times1 < 1000)
                 {
                     labTime.Text = "0" + "秒";
@@ -528,7 +530,13 @@ namespace 生成xml工具
                 else
                 {
                     labTime.Text = times1.ToString().Substring(0, times1.ToString().Length - 3) + "秒";
+                    if (labTime.Text == "10秒" && checkBox2.Checked == true)
+                    {
+                        string text = tBtext.Text;
+                        voice(text);
+                    }
                 }
+               
                 Application.DoEvents();//可执行某无聊的操作
             }
         }
@@ -551,19 +559,11 @@ namespace 生成xml工具
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            //counts1 += 1;
-            //int d = 10;
-            //int count1 = int.Parse(counts1.ToString()) / d;
-            //int times = int.Parse(this.textBox3.Text);
-            //int sum = times - count1;
-            //label1.Text = "剩余：" + sum.ToString() + "秒";
             Delay(int.Parse(this.tBtime.Text));
-            //MessageBox.Show(Delay(int.Parse(this.textBox3.Text)).ToString());
             if (this.checkBox1.Checked == true)
             {
                 //生成文件
                 button3_Click(null, null);
-
                 //启动定时任务
                 //延迟
                 Delay1(3000);
@@ -586,6 +586,23 @@ namespace 生成xml工具
             else //(bustr == "关闭自动贴标")
             {
                 timer1.Stop();
+            }
+        }
+        //语音播报
+        public void voice(string p)
+        {
+            try
+            {
+                SpeechVoiceSpeakFlags flag = SpeechVoiceSpeakFlags.SVSFDefault;
+                SpVoice voice = new SpVoice();
+                string voice_txt = p;
+                voice.Voice = voice.GetVoices(string.Empty, string.Empty).Item(0);
+                //voice.SynchronousSpeakTimeout = 5000;
+                voice.Speak(voice_txt, flag);
+            }
+            catch (Exception ex)
+            {
+                
             }
         }
         //校验
